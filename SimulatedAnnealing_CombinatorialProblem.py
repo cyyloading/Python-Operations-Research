@@ -2,7 +2,7 @@
 """
 Created on Fri Apr 22 22:17:59 2022
 
-@author: TA005
+@author: cyy
 """
 
 # Quadratic Assignment Problem (minimization problem)
