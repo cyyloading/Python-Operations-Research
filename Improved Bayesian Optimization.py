@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Improved Bayesian Optimization for SEIR nonlinear dynamic model
+Improved Bayesian Optimization for nonlinear dynamic SEIR optimization system
 
 @author: cyy
 """
