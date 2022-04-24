@@ -15,7 +15,7 @@ Created on Fri Apr 22 22:17:59 2022
 import numpy as np
 from matplotlib import pyplot as plt
 import pandas as pd
-import csv
+import random
 
 
 init_Dist = pd.read_excel('CombinatorialProblemData.xlsx','Dist',index_col=0)
@@ -39,30 +39,15 @@ def SA(X0,Dist,Flow,T0,M,N,T_rate):
     obj = []
     for i in range(M):
         for j in range(N):
-            ran1 = np.random.randint(0,len(X0))
-            ran2 = np.random.randint(0,len(X0))
-            
-            while ran1==ran2: # untile generate 2 different random values
-                ran2 = np.random.randint(0,len(X0))
-            
-            
+            ran = random.sample(range(0,len(X0)),2)
+            ran1 = ran[0]
+            ran2 = ran[1]                   
             # two random values ran1 and ran2 are used as index to swap the facilities location in X0  
             # for example if ran1 = 0, ran2 = 3, X0=['B','D','A','E','C','F','G','H']   
-            # after swap, x0 becomes ['E','D','A','B','C','F','G','H']   
-            
-            A1 = X0[ran1]
-            A2 = X0[ran2]
-        
-            xt = [] # used to storage the new solution (X0's neighbor)
-            for k in range(len(X0)):
-                if X0[k]==A1:
-                    xt = np.append(xt,A2) # if and elif are used to swap A1 and A2
-                elif X0[k]==A2:
-                    xt = np.append(xt,A1)
-                else:                      # for other location no A1 and A2, remain unchanged, so directly append the original X0[k] to xt
-                    xt = np.append(xt, X0[k])
-            
-
+            # after swap, x0 becomes ['E','D','A','B','C','F','G','H']      
+            xt = X0.copy()
+            xt[ran1],xt[ran2] = xt[ran2],xt[ran1]
+           
             Obj_current = F(X0,Dist,Flow)
             Obj_neighbor = F(xt,Dist,Flow)
             
