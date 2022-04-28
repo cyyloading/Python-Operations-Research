@@ -23,8 +23,8 @@ def fitness(x,lb,ub): # x can be multi-dimensional array, lb is lower bounds of 
             t = t+1
             z = z+1
         
-        precision = (ub[i]-lb[i])/((2**n_bits)-1)
-        decoded_x.append(bit_sum*precision+lb[i])
+        precision = (ub[i]-lb[i])/((2**n_bits)-1)   # precision=(UpperBound - LowerBound)/(2**(length of chromosome)-1)
+        decoded_x.append(bit_sum*precision+lb[i])   # transfer the chromosome to true value: true value = sum(x[i]*(2**z))*precision + LowerBound
     
     # the objective function is himmelblau function in our example
     # min ((x**2)+y-11)**2+(x+(y**2)-7)**2
