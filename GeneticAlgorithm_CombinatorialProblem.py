@@ -124,7 +124,7 @@ def mutation(all_children):
 def GA(Dist,Flow,M,N,r_cross,r_mut):
     # initial population of random bitstring
     X0 = ['B','D','A','E','C','F','G','H']
-    all_population = [np.array(random.sample(X0,len(X0))) for i in range(10)]
+    all_population = [np.array(random.sample(X0,len(X0))) for i in range(N)]
     
     score = [fitness(c,Dist,Flow) for c in all_population]
     best,best_score = 0,10**8
@@ -149,8 +149,8 @@ def GA(Dist,Flow,M,N,r_cross,r_mut):
 
 
         
-M = 100  # define the total iterations
-N = 100      # define the population size
+M = 40  # define the total iterations
+N = 600      # define the population size
 r_cross = 0.9  # crossover rate
 r_mut = 0.5  # mutation rate
 
